@@ -75,4 +75,25 @@ router.post('/:habitId/log', authMiddleware, async (req, res) => {
   }
 });
 
+
+// DELETE a Habit
+router.delete('/:habitId/delete', authMiddleware, async (req, res) => {
+  try {
+    const habit = await Habit.findById(req.params.habitId);
+
+    if (!habit || habit.userId.toString() !== req.user.id) {
+      return res.status(404).json({ message: 'Habit not found or unauthorized' });
+    }
+
+    await habit.deleteOne();
+    res.json({ message: 'Habit deleted successfully' });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Server Error');
+  }
+});
+
+
+
+
 module.exports = router;

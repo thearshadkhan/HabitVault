@@ -22,3 +22,11 @@ export const logHabit = async (token, habitId, status) => {
   });
   return res.data;
 };
+
+// DELETE today's log
+export const deleteHabitLog = async (token, habitId) => {
+  const res = await axios.delete(`${API_URL}/${habitId}/delete`, {
+    headers: { Authorization: `Bearer ${token}` }
+  });
+  return res.data;
+};

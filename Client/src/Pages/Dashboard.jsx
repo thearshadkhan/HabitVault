@@ -1,7 +1,7 @@
 import { useEffect, useState, useContext } from 'react';
 import { createHabit, getHabits, logHabit } from '../api/habits';
 import { AuthContext } from '../context/AuthContext';
-import HabitForm from '../Components/HabitForm'
+import HabitForm from '../Components/HabitForm';
 import HabitList from '../Components/HabitList';
 import { useNavigate } from 'react-router-dom';
 
@@ -38,7 +38,7 @@ const Dashboard = () => {
       <button onClick={() => { logout(); navigate('/'); }}>Logout</button>
       <h1>Dashboard</h1>
       <HabitForm onCreate={handleCreateHabit} />
-      <HabitList habits={habits} onLog={handleLogHabit} />
+      <HabitList habits={habits} onLog={handleLogHabit} fetchHabits={fetchHabits} token={token} />
     </div>
   );
 };
