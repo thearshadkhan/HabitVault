@@ -15,12 +15,14 @@ const Register = () => {
   };
 
   return (
-    <div style={{ textAlign: 'center' }}>
+    <div className="bg-gray-200 flex justify-center items-center h-[100vh]">
+      <div className="flex flex-col items-start p-4 bg-white rounded-xl shadow-xl" style={{ textAlign: 'center' }}>
       <AuthForm onSubmit={handleRegister} title="Register" />
       <p>
         Already have an account?{' '}
-        <Link to="/login">Login</Link> {/* 👈 clickable link to login */}
+        <Link className='text-green-600' to="/">Login</Link> {/* 👈 clickable link to login */}
       </p>
+      </div>
     </div>
   );
 };

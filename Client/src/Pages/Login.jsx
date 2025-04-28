@@ -15,12 +15,14 @@ const Login = () => {
   };
 
   return (
-    <div style={{ textAlign: 'center' }}>
+    <div className="bg-gray-200 flex justify-center items-center h-[100vh]">
+      <div className="flex flex-col items-start p-4 bg-white rounded-xl shadow-xl" style={{ textAlign: 'center' }}>
       <AuthForm onSubmit={handleLogin} title="Login" />
-      <p>Don't have an account?</p>
+      <p className='text-gray-700'>Don't have an account?</p>
       <Link to="/register">
-        <button style={{ marginTop: '10px' }}>Register</button>
+        <button className='px-3 py-1 mt-2 rounded-lg bg-white border-2 border-green-400 hover:bg-green-400 hover:text-white font-semibold'>Register</button>
       </Link>
+    </div>
     </div>
   );
 };
