@@ -30,3 +30,11 @@ export const deleteHabitLog = async (token, habitId) => {
   });
   return res.data;
 };
+
+// Edit Habit
+export const editHabit = async (token, habitId, habitData) => {
+  const res = await axios.put(`${API_URL}/${habitId}`, habitData, {
+    headers: { Authorization: `Bearer ${token}` }
+  });
+  return res.data;
+};
