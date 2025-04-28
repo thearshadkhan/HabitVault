@@ -34,9 +34,9 @@ const Dashboard = () => {
   };
 
   return (
-    <div>
-      <button onClick={() => { logout(); navigate('/'); }}>Logout</button>
-      <h1>Dashboard</h1>
+    <div className='flex flex-col justify-center items-center gap-10'>
+      <button className='px-3 py-1 max-w-fit bg-stone-800 text-white hover:bg-stone-600' onClick={() => { logout(); navigate('/'); }}>Logout</button>
+      <h1 className='text-5xl font-bold'>Dashboard</h1>
       <HabitForm onCreate={handleCreateHabit} />
       <HabitList habits={habits} onLog={handleLogHabit} fetchHabits={fetchHabits} token={token} />
     </div>
