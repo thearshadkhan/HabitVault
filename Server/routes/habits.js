@@ -1,3 +1,4 @@
+// routes/habitRoutes.js
 const express = require('express');
 const Habit = require('../Models/Habit');
 const authMiddleware = require('../middleware/authMiddleware');
@@ -8,7 +9,7 @@ router.post('/', authMiddleware, async (req, res) => {
   const { name, targetDays, startDate } = req.body;
   try {
     const newHabit = new Habit({
-      userId: req.user,
+      userId: req.user.id, // Reference user ID
       name,
       targetDays,
       startDate,
@@ -24,7 +25,7 @@ router.post('/', authMiddleware, async (req, res) => {
 // Get all Habits for User
 router.get('/', authMiddleware, async (req, res) => {
   try {
-    const habits = await Habit.find({ userId: req.user });
+    const habits = await Habit.find({ userId: req.user.id }); // Corrected userId reference
     res.json(habits);
   } catch (err) {
     res.status(500).send('Server Error');
@@ -36,8 +37,8 @@ router.post('/:habitId/log', authMiddleware, async (req, res) => {
   const { status } = req.body; // 'completed' or 'missed'
   try {
     const habit = await Habit.findById(req.params.habitId);
-    if (!habit || habit.userId.toString() !== req.user) {
-      return res.status(404).json({ message: 'Habit not found' });
+    if (!habit || habit.userId.toString() !== req.user.id) { // Corrected userId check
+      return res.status(404).json({ message: 'Habit not found or unauthorized' });
     }
 
     const today = new Date();
@@ -73,7 +74,5 @@ router.post('/:habitId/log', authMiddleware, async (req, res) => {
     res.status(500).send('Server Error');
   }
 });
-
-// Edit or Delete Habit (similar routes can be created)
 
 module.exports = router;

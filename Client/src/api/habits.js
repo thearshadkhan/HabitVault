@@ -1,0 +1,24 @@
+import axios from 'axios';
+
+const API_URL = 'http://localhost:5000/api/habits';
+
+export const createHabit = async (token, habitData) => {
+  const res = await axios.post(API_URL, habitData, {
+    headers: { Authorization: `Bearer ${token}` }
+  });
+  return res.data;
+};
+
+export const getHabits = async (token) => {
+  const res = await axios.get(API_URL, {
+    headers: { Authorization: `Bearer ${token}` }
+  });
+  return res.data;
+};
+
+export const logHabit = async (token, habitId, status) => {
+  const res = await axios.post(`${API_URL}/${habitId}/log`, { status }, {
+    headers: { Authorization: `Bearer ${token}` }
+  });
+  return res.data;
+};
