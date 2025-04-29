@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api/habits';
+const API_URL = 'https://habitvault-backend.onrender.com/api/habits';
 
 export const createHabit = async (token, habitData) => {
   const res = await axios.post(API_URL, habitData, {
@@ -26,6 +26,14 @@ export const logHabit = async (token, habitId, status) => {
 // DELETE today's log
 export const deleteHabitLog = async (token, habitId) => {
   const res = await axios.delete(`${API_URL}/${habitId}/delete`, {
+    headers: { Authorization: `Bearer ${token}` }
+  });
+  return res.data;
+};
+
+// Edit Habit
+export const editHabit = async (token, habitId, habitData) => {
+  const res = await axios.put(`${API_URL}/${habitId}`, habitData, {
     headers: { Authorization: `Bearer ${token}` }
   });
   return res.data;
