@@ -70,19 +70,19 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="flex min-h-screen bg-gray-100">
+    <div className="flex min-h-screen bg-gray-100 max-md:flex-col">
       {/* Sidebar */}
-      <div className="w-64 bg-stone-800 text-white p-6 flex flex-col justify-between">
-        <div>
-          <h2 className="text-3xl font-bold mb-8">HabitVault</h2>
+      <div className="w-64 bg-stone-800 text-white p-6 flex flex-col justify-start items-center max-md:justify-between max-md:flex-row max-md:w-full max-md:p-2">
+        {/* <div className='flex flex-col max-md:flex-row max-md:justify-around gap-15 max-md:gap-12 max-sm:gap-5 sm:justify-around'> */}
+          <h2 className="text-3xl font-bold mb-8 max-md:mb-0">HabitVault</h2>
           <button
             onClick={handleLogout}
-            className="w-full bg-red-600 hover:bg-red-500 text-white font-semibold py-2 px-4 rounded"
+            className="w-fit bg-red-600 hover:bg-red-500 text-white font-semibold py-2 px-4 rounded"
           >
             Logout
           </button>
-        </div>
-        <p className="text-sm text-gray-400 mt-10">&copy; 2025 HabitVault</p>
+        {/* </div> */}
+        {/* <p className="text-sm text-gray-400 mt-10 max-md:mt-0">&copy; 2025 HabitVault</p> */}
       </div>
 
       {/* Main Content */}
