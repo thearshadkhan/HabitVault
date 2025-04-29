@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-// import { logHabit, deleteHabitLog, editHabit } from '../api/habits';
 import HabitPerformanceChart from "./HabitPerformanceChart";
 
 const HabitList = ({ habits, onLog, onDelete, onUpdate }) => {
@@ -61,8 +60,8 @@ const HabitList = ({ habits, onLog, onDelete, onUpdate }) => {
     }
   };
 
-  const handleDelete = async (habitId, e) => {
-    e.stopPropagation();
+  const handleDelete = async (habitId) => {
+    // e.stopPropagation();
     try {
       await onDelete(habitId); // <<< use the prop
       setExpandedHabitId(null);
